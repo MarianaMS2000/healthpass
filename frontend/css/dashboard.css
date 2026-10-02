@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #f7faf9;
+    color: #0f172a;
+    min-height: 100vh;
+    padding-bottom: 90px; /* Espacio para la navegación inferior fija */
+}
+
+/* ==========================================
+   HEADER DE ANCHO COMPLETO (PC / TABLET / MÓVIL)
+   ========================================== */
+.dashboard-header {
+    width: 100%;
+    background-color: #0d9488;
+    color: #ffffff;
+    padding: 2.2rem 1.5rem 4rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 580px; /* Alineado con el bloque central */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.greeting-subtitle {
+    font-size: 0.9rem;
+    color: #e0f2fe;
+    font-weight: 400;
+}
+
+.user-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-top: 0.1rem;
+}
+
+.profile-avatar {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* ==========================================
+   CONTENEDOR CENTRAL DE CONTENIDO
+   ========================================== */
+.dashboard-container {
+    width: 100%;
+    max-width: 720px;
+    margin: -2.8rem auto 0 auto; /* Eleva el banner de emergencia sobre la franja teal */
+    padding: 0 1.25rem;
+}
+
+/* BANNER DE EMERGENCIA (ROJO) */
+.emergency-banner {
+    background: linear-gradient(135deg, #e11d48, #f43f5e);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 8px 24px rgba(225, 29, 72, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.emergency-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(225, 29, 72, 0.28);
+}
+
+.banner-icon-wrapper {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.banner-text {
+    flex: 1;
+}
+
+.banner-text h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+}
+
+.banner-text p {
+    font-size: 0.83rem;
+    opacity: 0.9;
+}
+
+.banner-arrow {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* SECCIÓN ACCESO RÁPIDO */
+.quick-access-section {
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1.1rem;
+}
+
+/* GRID DE TARJETAS (2 COLUMNAS) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.info-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* ICONOS DE LAS TARJETAS */
+.card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.icon-red { background-color: #ffe4e6; color: #e11d48; }
+.icon-amber { background-color: #fef3c7; color: #d97706; }
+.icon-teal { background-color: #ccfbf1; color: #0d9488; }
+.icon-purple { background-color: #f3e8ff; color: #9333ea; }
+.icon-blue { background-color: #e0f2fe; color: #0284c7; }
+.icon-gray { background-color: #f1f5f9; color: #64748b; }
+
+.card-label {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.card-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* BADGE INFORMACIÓN ACTUALIZADA */
+.status-badge {
+    margin-top: 1.25rem;
+    background-color: #e6fffa;
+    border: 1px solid #b2f5ea;
+    border-radius: 14px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #0d9488;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-badge i {
+    font-size: 1rem;
+}
+
+/* ==========================================
+   NAVEGACIÓN INFERIOR (ANCHO COMPLETO UNIFICADO)
+   ========================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    padding: 0.75rem 1.5rem; /* Separación con los bordes de la pantalla */
+    z-index: 1000;
+}
+
+.nav-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Distribuye los 4 elementos de borde a borde */
+    align-items: center;
+}
+
+.nav-item {
+    flex: 1; /* Garantiza el mismo espacio para cada opción sin moverlos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+}
+
+.nav-item.active {
+    color: #0d9488;
+    font-weight: 500; /* Mantiene el peso fijo para que no salte al hacer clic */
+}
+.nav-item:hover {
+    color: #0d9488;
+}

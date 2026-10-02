@@ -1,0 +1,369 @@
+/* ==========================================
+   RESET & REGLAS GLOBALES
+   ========================================== */
+html {
+    overflow-y: scroll; /* Evita saltos de navegación por la barra de desplazamiento */
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-teal: #0d9488;
+    --primary-teal-dark: #0f766e;
+    --bg-light: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-subtle: #94a3b8;
+    --border-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --font-sans: 'Inter', sans-serif;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    padding-bottom: 90px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   CABECERA PRINCIPAL (TEAL)
+   ========================================== */
+.privacy-header {
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+.header-inner {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-inner h1 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.header-inner p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* ==========================================
+   CONTENEDOR CENTRAL DE TARJETAS
+   ========================================== */
+.privacy-container {
+    max-width: 600px;
+    margin: -2rem auto 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.card-section {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-color);
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.25rem;
+}
+
+/* ==========================================
+   LISTA DE INTERRUPTORES (TOGGLES)
+   ========================================== */
+.toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-info h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.15rem;
+}
+
+.toggle-status {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+}
+
+/* COMPONENTE INTERRUPTOR (SWITCH UI) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: .25s ease;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .25s ease;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-teal);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* ==========================================
+   SECCIÓN ACCESO COMPARTIDO
+   ========================================== */
+.section-subtext {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+.btn-generate-link {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.15s ease;
+}
+
+.btn-generate-link i {
+    font-size: 1.2rem;
+}
+
+.btn-generate-link:hover {
+    background-color: var(--primary-teal-dark);
+}
+
+/* ==========================================
+   BANNER INFORMATIVO
+   ========================================== */
+.info-banner {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #166534;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.info-banner i {
+    font-size: 1.1rem;
+    color: #15803d;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   NAVEGACIÓN INFERIOR (ESTÁTICA Y UNIFICADA)
+   ========================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    padding: 0.75rem 1.5rem;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.nav-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+}
+
+.nav-item.active {
+    color: var(--primary-teal);
+    font-weight: 500;
+}
+
+/* ==========================================
+   ENLACE GENERADO & TOAST NOTIFICATION
+   ========================================== */
+.hidden {
+    display: none !important;
+}
+
+.generated-link-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.link-display {
+    background-color: #f0fdf4;
+    border: 1px solid #ccfbf1;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--primary-teal);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.link-display i {
+    font-size: 1.2rem;
+    transform: rotate(-45deg);
+}
+
+.link-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.btn-copy {
+    padding: 0.75rem;
+    border: 1.5px solid var(--primary-teal);
+    background-color: #ffffff;
+    color: var(--primary-teal);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-copy:hover {
+    background-color: #f0fdf4;
+}
+
+.btn-revoke {
+    padding: 0.75rem;
+    border: none;
+    background-color: #fff1f2;
+    color: #f43f5e;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-revoke:hover {
+    background-color: #ffe4e6;
+}
+
+/* MENSAJE EMERGENTE (TOAST) */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-notification i {
+    font-size: 1.1rem;
+}
+
+/* Estilo del toast para la acción de revocar acceso */
+.toast-notification.toast-danger {
+    background-color: #f43f5e; /* Rojo de advertencia */
+}

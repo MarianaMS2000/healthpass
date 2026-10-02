@@ -1,0 +1,41 @@
+# Desarrollo local: base de datos PostgreSQL + aplicación
+#   docker compose up -d --build     -> abre http://localhost:3000
+#   docker compose down              -> apaga (los datos se conservan en el volumen)
+#   docker compose down -v           -> apaga y BORRA los datos
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: healthpass-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: healthpass
+      POSTGRES_PASSWORD: healthpass_dev
+      POSTGRES_DB: healthpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - healthpass_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U healthpass -d healthpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: healthpass-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      DATABASE_URL: postgresql://healthpass:healthpass_dev@db:5432/healthpass
+      JWT_SECRET: clave-solo-para-desarrollo-local
+      SEED_DEMO: "true"
+    ports:
+      - "3000:3000"
+
+volumes:
+  healthpass_data:

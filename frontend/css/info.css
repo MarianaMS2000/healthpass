@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #f7faf9;
+    color: #334155;
+    min-height: 100vh;
+    padding-bottom: 90px;
+}
+
+/* ==========================================
+   HEADER TEAL DE ANCHO COMPLETO
+   ========================================== */
+.info-header {
+    width: 100%;
+    background-color: #0d9488;
+    color: #ffffff;
+    padding: 2.2rem 1.5rem 2.2rem 1.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* HEADER TEAL */
+.header-inner {
+    width: 100%;
+    max-width: 720px; /* <--- Antes era 580px, ahora más ancho */
+}
+
+.header-inner h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.header-inner p {
+    font-size: 0.85rem;
+    color: #e0f2fe;
+    font-weight: 400;
+    margin-top: 0.3rem;
+}
+
+/* CONTENEDOR DE TARJETAS */
+.info-container {
+    width: 100%;
+    max-width: 720px; /* <--- Amplía los cuadros blancos horizontalmente */
+    margin: 1.5rem auto 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+/* TARJETAS BASE */
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 1.35rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header.border-none {
+    margin-bottom: 0;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card-title h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* BOTÓN EDITAR */
+.btn-edit {
+    background: transparent;
+    border: none;
+    color: #0d9488;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: opacity 0.2s ease;
+}
+
+.btn-edit:hover {
+    opacity: 0.8;
+}
+
+/* ICONOS Y SOMBRAS */
+.icon-gray-text {
+    color: #64748b;
+    background-color: #f1f5f9;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+}
+
+.icon-amber-text { 
+    color: #d97706; 
+    background-color: #fef3c7; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.12); 
+}
+
+.icon-purple-text { 
+    color: #9333ea; 
+    background-color: #f3e8ff; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(147, 51, 234, 0.12); 
+}
+
+.icon-blue-text { 
+    color: #0284c7; 
+    background-color: #e0f2fe; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.12); 
+}
+
+.icon-teal-text { 
+    color: #0d9488; 
+    background-color: #ccfbf1; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(13, 148, 136, 0.12); 
+}
+
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.icon-red { 
+    background-color: #ffe4e6; 
+    color: #e11d48; 
+    box-shadow: 0 6px 14px rgba(225, 29, 72, 0.15); 
+}
+
+/* DATOS Y CAMPOS */
+.grid-two-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.field-group {
+    margin-bottom: 0.75rem;
+}
+
+.field-group:last-child {
+    margin-bottom: 0;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.field-value {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.field-text {
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* TIPO DE SANGRE BOX */
+.blood-type-box {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.blood-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #e11d48;
+    line-height: 1;
+}
+
+/* LISTA DE ITEMS (ALERGIAS, MEDICAMENTOS, ETC) */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.list-item {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+    color: #334155;
+    font-weight: 400;
+}
+
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.btn-delete:hover {
+    color: #ef4444;
+}
+
+/* ==========================================
+   NAVEGACIÓN INFERIOR (ANCHO COMPLETO UNIFICADO)
+   ========================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    padding: 0.75rem 1.5rem; /* Separación con los bordes de la pantalla */
+    z-index: 1000;
+}
+
+.nav-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Distribuye los 4 elementos de borde a borde */
+    align-items: center;
+}
+
+.nav-item {
+    flex: 1; /* Garantiza el mismo espacio para cada opción sin moverlos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+}
+
+.nav-item.active {
+    color: #0d9488;
+    font-weight: 500; /* Mantiene el peso fijo para que no salte al hacer clic */
+}
+.nav-item:hover {
+    color: #0d9488;
+}
+
+/* ==========================================
+   MODAL EDITAR DATOS PERSONALES
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.45); /* Capa oscura traslúcida */
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    padding: 1.25rem;
+}
+
+/* Estado activo del modal */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    padding: 1.75rem 1.85rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    transform: translateY(10px);
+    transition: transform 0.25s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+/* HEADER MODAL */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    color: #334155;
+    cursor: pointer;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    color: #0f172a;
+}
+
+/* CAMPOS DE FORMULARIO */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 0.45rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #0d9488;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+}
+
+.textarea-control {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+
+/* INPUT CON ICONO (FECHA) */
+.input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-wrapper .form-control {
+    padding-right: 2.75rem;
+}
+
+.input-icon {
+    position: absolute;
+    right: 1rem;
+    color: #334155;
+    font-size: 1.05rem;
+    pointer-events: none;
+}
+
+/* BOTONES DE ACCIÓN (CANCELAR / GUARDAR) */
+.modal-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-top: 1.75rem;
+}
+
+.btn-modal-cancel {
+    background-color: #ffffff;
+    border: 1.5px solid #0d9488;
+    color: #0d9488;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-modal-cancel:hover {
+    background-color: #f0fdfa;
+}
+
+.btn-modal-save {
+    background-color: #0d9488;
+    border: 1.5px solid #0d9488;
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-modal-save:hover {
+    background-color: #0f766e;
+}
+
+/* ==========================================
+   MODAL TIPO DE SANGRE
+   ========================================== */
+.blood-modal-card {
+    max-width: 440px;
+}
+
+.blood-subtitle {
+    font-size: 0.92rem;
+    color: #64748b;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+.blood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.blood-option {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 0.85rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blood-option:hover {
+    border-color: #f43f5e;
+    color: #f43f5e;
+    background-color: #fff1f2;
+}
+
+/* Opción seleccionada (O+ activo) */
+.blood-option.active {
+    background-color: #f43f5e;
+    border-color: #f43f5e;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+}
+
+.input-subtitle {
+    display: block;
+    font-size: 0.88rem;
+    color: #64748b;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+}

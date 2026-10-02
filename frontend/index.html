@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPass - Tu información médica cuando más la necesites</title>
+    
+    <!-- Importación de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">
+                <img src="images/corazon.png" alt="HealthPass Logo">
+            </span>
+            <span class="logo-text">HealthPass</span>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA PARA MÓVIL -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="nav-menu">
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#seguridad">Seguridad</a>
+
+            <!-- ACCIONES VISIBLES EN DENTRO DEL MENÚ MÓVIL -->
+            <div class="mobile-actions">
+                <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
+                <a href="register.html" class="btn btn-primary">Crear cuenta</a>
+            </div>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
+            <a href="register.html" class="btn btn-primary">Crear cuenta</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag">
+                <img src="images/seguridad.png" alt="Seguridad" class="tag-icon">
+                Datos seguros, siempre disponibles
+            </span>
+            <h1>Tu información médica <span>cuando más la necesites</span></h1>
+            <p>HealthPass te permite registrar, organizar, actualizar y consultar tu información médica personal, accesible en cualquier momento — especialmente en situaciones de emergencia.</p>
+            
+            <span class="subtext">Sin tarjeta de crédito · Siempre gratuito para uso personal</span>
+        </div>
+        <div class="hero-image-container">
+            <div class="hero-card-img">
+                <img src="images/foto_1.avif" alt="Médico revisando información en su teléfono">
+                <div class="floating-badge">
+                    <div class="badge-icon">
+                        <img src="images/corazon.png" alt="Acceso de emergencia">
+                    </div>
+                    <div class="badge-info">
+                        <strong>Acceso de emergencia</strong>
+                        <span>Tipo O+ · Alérgico a penicilina</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA QUE RESOLVEMOS -->
+    <section class="problem-section">
+        <h2>El problema que resolvemos</h2>
+        <p class="section-desc">En una emergencia, encontrar información médica clave puede ser crítico y suele estar dispersa o ser inaccesible.</p>
+        <div class="grid-3">
+            <div class="dark-card">
+                <div class="icon-box">ⓘ</div>
+                <h3>Información dispersa</h3>
+                <p>Datos importantes repartidos entre distintos servicios y profesionales.</p>
+            </div>
+            <div class="dark-card">
+                <div class="icon-box">⚠</div>
+                <h3>Sin tiempo en emergencias</h3>
+                <p>Cuando cada segundo importa, la información esencial debe estar a la mano.</p>
+            </div>
+            <div class="dark-card">
+                <div class="icon-box">🛡</div>
+                <h3>Datos sin control</h3>
+                <p>No sabes quién tiene acceso ni qué información comparte cada plataforma.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como-funciona" class="how-section">
+        <h2>Cómo funciona</h2>
+        <p class="section-desc">Configura tu perfil médico completo en minutos y accede desde cualquier lugar.</p>
+        <div class="grid-4">
+            <div class="step-card">
+                <span class="step-num">01</span>
+                <h3>Regístrate</h3>
+                <p>Crea tu cuenta gratuita en menos de 2 minutos.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">02</span>
+                <h3>Ingresa tu información</h3>
+                <p>Agrega tipo de sangre, alergias, medicamentos y más.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">03</span>
+                <h3>Accede cuando la necesites</h3>
+                <p>Disponible siempre desde cualquier dispositivo.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">04</span>
+                <h3>Comparte en emergencias</h3>
+                <p>Genera un enlace de acceso rápido para quien lo necesite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUÉ INFORMACIÓN PUEDES REGISTRAR -->
+    <section class="info-section">
+        <h2>¿Qué información puedes registrar?</h2>
+        <p class="section-desc">Todo lo que necesitas en una sola plataforma.</p>
+        <div class="grid-3">
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/sangre.png" alt="Tipo de sangre">
+                </div>
+                <h3>Tipo de sangre</h3>
+            </div>
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/alergias.png" alt="Alergias">
+                </div>
+                <h3>Alergias</h3>
+            </div>
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/pill.png" alt="Medicamentos">
+                </div>
+                <h3>Medicamentos</h3>
+            </div>
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/antecedentes.png" alt="Antecedentes">
+                </div>
+                <h3>Antecedentes</h3>
+            </div>
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/phone.png" alt="Contactos de emergencia">
+                </div>
+                <h3>Contactos de emergencia</h3>
+            </div>
+            <div class="light-card">
+                <div class="light-icon">
+                    <img src="images/seguro.png" alt="Información de seguro">
+                </div>
+                <h3>Información de seguro</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="benefits-section">
+        <h2>Beneficios para todos</h2>
+        <div class="grid-2">
+            <div class="benefit-card">
+                <span class="benefit-pill pill-green"></span>
+                <h3>Para ti</h3>
+                <p>Ten tu información médica siempre organizada y a la mano, sin importar en qué hospital o consultorio estés.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-pill pill-blue"></span>
+                <h3>Para tu familia</h3>
+                <p>Asegúrate de que tus seres queridos tengan acceso a la información vital cuando más la necesiten.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-pill pill-red"></span>
+                <h3>Para emergencias</h3>
+                <p>Los servicios de emergencia pueden ver tu información médica crítica de forma inmediata con tu enlace.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-pill pill-purple"></span>
+                <h3>Para tu organización</h3>
+                <p>Consulta tus datos esenciales en un solo lugar, de forma ordenada y fácil de compartir con tu médico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEGURIDAD Y PRIVACIDAD -->
+    <section id="seguridad" class="privacy-section">
+        <div class="shield-icon">
+            <img src="images/seguridad.png" alt="Privacidad y Seguridad">
+        </div>
+        <h2>Tu privacidad, tu control</h2>
+        <p class="section-desc">Tú decides quién puede ver tu información, qué datos son visibles en emergencias y cuándo revocar el acceso. Puedes actualizar o eliminar tu información en cualquier momento.</p>
+        <div class="checks-grid">
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Control total de tus datos</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Cifrado de extremo a extremo</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Sin vender tu información</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER CTA -->
+<section class="cta-banner">
+    <h2>Empieza hoy, es gratis</h2>
+    <p>Tu información médica organizada y disponible cuando más la necesites.</p>
+    <!-- Agregamos btn-white aquí -->
+    <a href="register.html" class="btn btn-white">Crear cuenta gratis</a>
+</section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <img src="images/corazon.png" alt="HealthPass Logo">
+                    </span>
+                    <span class="logo-text">HealthPass</span>
+                </div>
+                <p>Tu información médica cuando más la necesites.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 HealthPass. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animación al hacer Scroll
+            const revealElements = document.querySelectorAll("section, .dark-card, .step-card, .light-card, .benefit-card");
+
+            revealElements.forEach(el => el.classList.add("reveal"));
+
+            const revealOnScroll = () => {
+                const triggerBottom = window.innerHeight * 0.85;
+
+                revealElements.forEach(el => {
+                    const elTop = el.getBoundingClientRect().top;
+                    if (elTop < triggerBottom) {
+                        el.classList.add("active");
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+
+            // Desplegable del menú hamburguesa para móvil
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+
+                // Cerrar el menú al presionar un enlace
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

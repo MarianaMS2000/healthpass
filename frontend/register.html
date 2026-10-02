@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta - HealthPass</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/logins.css">
+</head>
+<body>
+
+    <div class="auth-card">
+        <!-- Enlace dentro de la tarjeta -->
+        <a href="index.html" class="back-link">
+    <span class="back-arrow">←</span>
+    <span>Volver al inicio</span>
+</a>
+
+        <!-- Brand / Logo -->
+        <div class="brand-logo">
+            <div class="brand-icon">
+                <img src="images/corazon.png" alt="HealthPass Icon">
+            </div>
+            <span class="brand-name">HealthPass</span>
+        </div>
+
+        <!-- Títulos -->
+        <h1 class="auth-title">Crea tu cuenta</h1>
+        <p class="auth-subtitle">Gratis, sin tarjeta de crédito.</p>
+
+        <!-- Formulario -->
+        <form class="auth-form" id="authForm" data-mode="register">
+            <div class="form-group">
+                <label for="fullname">Nombre completo <span class="required-star">*</span></label>
+                <input type="text" id="fullname" placeholder="Juan Pérez López" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico <span class="required-star">*</span></label>
+                <input type="email" id="email" placeholder="juan@ejemplo.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nombre de usuario <span class="required-star">*</span></label>
+                <input type="text" id="username" placeholder="juanperez" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña <span class="required-star">*</span></label>
+                <input type="password" id="password" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirmar contraseña <span class="required-star">*</span></label>
+                <input type="password" id="confirm-password" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+            </div>
+
+            <p class="form-error" id="formError" role="alert" hidden></p>
+
+            <button type="submit" class="btn-submit">Registrarme</button>
+        </form>
+
+        <!-- Footer -->
+        <div class="auth-footer">
+            <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

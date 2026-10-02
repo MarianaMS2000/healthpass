@@ -1,0 +1,559 @@
+/* ==========================================
+   RESET & REGLAS GLOBALES
+   ========================================== */
+html {
+    overflow-y: scroll; /* Evita saltos de navegación por la barra de desplazamiento */
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-teal: #0d9488;
+    --primary-teal-dark: #0f766e;
+    --bg-light: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-subtle: #94a3b8;
+    --border-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --danger-red: #f43f5e;
+    --danger-bg-light: #fff1f2;
+    --danger-border: #fecdd3;
+    --font-sans: 'Inter', sans-serif;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    padding-bottom: 90px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   CABECERA DE PERFIL
+   ========================================== */
+.profile-header {
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    padding: 3rem 1.5rem 4.5rem;
+    text-align: center;
+}
+
+.header-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.profile-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.profile-handle {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+/* ==========================================
+   CONTENEDOR CENTRAL DE TARJETAS
+   ========================================== */
+.profile-container {
+    max-width: 600px;
+    margin: -2rem auto 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-section {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0; /* Color gris más visible para definir el borde */
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header-row h2 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.btn-text-action {
+    background: none;
+    border: none;
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.info-group {
+    margin-top: 1rem;
+}
+
+.info-label {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* ==========================================
+   TARJETAS TIPO ENLACE / ACCIÓN
+   ========================================== */
+.link-card {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.15s ease;
+}
+
+.link-card:hover {
+    background-color: #f1f5f9;
+}
+
+.link-card-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.icon-mint {
+    background-color: #ccfbf1;
+    color: var(--primary-teal);
+}
+
+.icon-slate {
+    background-color: #f1f5f9;
+    color: var(--text-muted);
+}
+
+.link-card-text h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.link-card-text p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+.arrow-icon {
+    color: var(--text-subtle);
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    border: 1px solid var(--border-color);
+}
+
+.text-logout {
+    color: var(--text-muted) !important;
+}
+
+/* ==========================================
+   ZONA DE PELIGRO
+   ========================================== */
+.danger-zone {
+    border: 1px solid var(--danger-border);
+    background-color: var(--card-bg);
+}
+
+.danger-zone h2 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--danger-red);
+    margin-bottom: 0.4rem;
+}
+
+.danger-zone p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.btn-danger {
+    background-color: var(--danger-red);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-danger:hover {
+    background-color: #e11d48;
+}
+
+/* ==========================================
+   NAVEGACIÓN INFERIOR (UNIFICADA Y ESTÁTICA)
+   ========================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    padding: 0.75rem 1.5rem;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.nav-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+}
+
+.nav-item.active {
+    color: var(--primary-teal);
+    font-weight: 500;
+}
+
+/* ==========================================
+   MODALES
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 440px;
+    padding: 1.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.modal-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.required {
+    color: var(--danger-red);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--primary-teal);
+}
+
+.modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.btn-modal-cancel {
+    padding: 0.75rem;
+    border: 1.5px solid var(--primary-teal);
+    background-color: #ffffff;
+    color: var(--primary-teal);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btn-modal-save {
+    padding: 0.75rem;
+    border: none;
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* Estilos adicionales para Modal Cambiar Contraseña */
+.btn-cancel-text {
+    background: none;
+    border: none;
+    color: var(--primary-teal);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.modal-actions-full {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.btn-modal-submit-full {
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    background-color: var(--primary-teal);
+    color: #ffffff;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-modal-submit-full:hover {
+    background-color: var(--primary-teal-dark);
+}
+
+/* ==========================================
+   ESTILOS MODAL ELIMINAR INFORMACIÓN
+   ========================================== */
+.btn-close-icon {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #0f172a;
+    cursor: pointer;
+}
+
+.danger-warning-box {
+    background-color: #fff1f2;
+    border: 1px solid #ffe4e6;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #f43f5e;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+
+.danger-warning-box i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.modal-description {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.btn-modal-cancel-outline {
+    padding: 0.8rem;
+    border: 1.5px solid var(--primary-teal);
+    background-color: #ffffff;
+    color: var(--primary-teal);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-modal-cancel-outline:hover {
+    background-color: #f0fdf4;
+}
+
+.btn-modal-danger-fill {
+    padding: 0.8rem;
+    border: none;
+    background-color: #f43f5e;
+    color: #ffffff;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-modal-danger-fill:hover {
+    background-color: #e11d48;
+}
+
+/* ==========================================
+   TOAST NOTIFICATION (ELIMINADO)
+   ========================================== */
+.hidden {
+    display: none !important;
+}
+
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 0.75rem 1.25rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.toast-notification.toast-danger {
+    background-color: #f43f5e;
+    color: #ffffff;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

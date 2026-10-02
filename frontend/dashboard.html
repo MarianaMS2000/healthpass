@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - HealthPass</title>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- CABECERA DE ANCHO COMPLETO (TEAL) -->
+    <header class="dashboard-header">
+        <div class="header-inner">
+            <div class="user-greeting">
+                <span class="greeting-subtitle" id="greeting">Hola</span>
+                <h1 class="user-name" id="userName">&nbsp;</h1>
+            </div>
+            <div class="profile-avatar">
+                <i class="bi bi-person"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR CENTRAL DE CONTENIDO -->
+    <main class="dashboard-container">
+        
+        <!-- BANNER ACCESO DE EMERGENCIA -->
+        <a href="emergency.html" class="emergency-banner">
+            <div class="banner-icon-wrapper">
+                <i class="bi bi-heart-fill"></i>
+            </div>
+            <div class="banner-text">
+                <h2>Acceso de emergencia</h2>
+                <p>Ver información crítica al instante</p>
+            </div>
+            <div class="banner-arrow">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </a>
+
+        <!-- SECCIÓN ACCESO RÁPIDO -->
+        <section class="quick-access-section">
+            <h3 class="section-title">Acceso rápido</h3>
+
+            <div class="cards-grid">
+                <!-- Tarjeta 1: Tipo de sangre -->
+                <div class="info-card">
+                    <div class="card-icon icon-red">
+                        <i class="bi bi-droplet-fill"></i>
+                    </div>
+                    <span class="card-label">Tipo de sangre</span>
+                    <strong class="card-value" id="dashBlood">…</strong>
+                </div>
+
+                <!-- Tarjeta 2: Alergias -->
+                <div class="info-card">
+                    <div class="card-icon icon-amber">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <span class="card-label">Alergias</span>
+                    <strong class="card-value" id="dashAllergies">…</strong>
+                </div>
+
+                <!-- Tarjeta 3: Contactos de emergencia -->
+                <div class="info-card">
+                    <div class="card-icon icon-teal">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+                    <span class="card-label">Contactos de emergencia</span>
+                    <strong class="card-value" id="dashContacts">…</strong>
+                </div>
+
+                <!-- Tarjeta 4: Medicamentos -->
+                <div class="info-card">
+                    <div class="card-icon icon-purple">
+                        <i class="bi bi-capsule"></i>
+                    </div>
+                    <span class="card-label">Medicamentos</span>
+                    <strong class="card-value" id="dashMeds">…</strong>
+                </div>
+
+                <!-- Tarjeta 5: Seguro -->
+                <div class="info-card">
+                    <div class="card-icon icon-blue">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <span class="card-label">Seguro</span>
+                    <strong class="card-value" id="dashInsurance">…</strong>
+                </div>
+
+                <!-- Tarjeta 6: Mi perfil -->
+                <div class="info-card">
+                    <div class="card-icon icon-gray">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <span class="card-label">Mi perfil</span>
+                    <strong class="card-value" id="dashProfile">…</strong>
+                </div>
+            </div>
+
+            <!-- ALERTA DE INFORMACIÓN ACTUALIZADA -->
+            <div class="status-badge">
+                <i class="bi bi-check-lg"></i>
+                <span>Información actualizada el 3 de septiembre, 2026</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- BARRA INFERIOR DE ANCHO COMPLETO -->
+    <nav class="bottom-nav">
+        <div class="nav-inner">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="bi bi-house-door"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="info.html" class="nav-item">
+                <i class="bi bi-info-circle"></i>
+                <span>Mi información</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <i class="bi bi-telephone"></i>
+                <span>Contactos</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

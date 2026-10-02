@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Información Médica - HealthPass</title>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/info.css">
+</head>
+<body>
+
+    <!-- CABECERA DE ANCHO COMPLETO (TEAL) -->
+    <header class="info-header">
+        <div class="header-inner">
+            <h1>Mi información médica</h1>
+            <p>Mantén tu perfil médico siempre actualizado</p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR CENTRAL -->
+    <main class="info-container">
+
+        <!-- 1. Datos personales -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-person icon-gray-text"></i>
+                    <h3>Datos personales</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditProfile">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="grid-two-cols">
+                <div>
+                    <span class="field-label">Nombre</span>
+                    <strong class="field-value" id="infoName"></strong>
+                </div>
+                <div>
+                    <span class="field-label">Fecha de nacimiento</span>
+                    <strong class="field-value" id="infoBirth"></strong>
+                </div>
+            </div>
+            <div class="field-group">
+                <span class="field-label">Información básica</span>
+                <p class="field-text" id="infoBasic"></p>
+            </div>
+        </div>
+
+        <!-- 2. Tipo de sangre -->
+        <div class="card">
+            <div class="card-header border-none">
+                <div class="blood-type-box">
+                    <div class="card-icon icon-red">
+                        <i class="bi bi-droplet-fill"></i>
+                    </div>
+                    <div>
+                        <span class="field-label">Tipo de sangre</span>
+                        <strong class="blood-value" id="infoBlood"></strong>
+                    </div>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditBlood">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. Alergias -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-exclamation-triangle-fill icon-amber-text"></i>
+                    <h3>Alergias</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditAllergies">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="item-list" id="listAlergias">
+            </div>
+        </div>
+
+        <!-- 4. Antecedentes médicos -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-info-circle-fill icon-blue-text"></i>
+                    <h3>Antecedentes médicos</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditHistory">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="item-list" id="listAntecedentes">
+            </div>
+        </div>
+
+        <!-- 5. Medicamentos actuales -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-capsule icon-purple-text"></i>
+                    <h3>Medicamentos actuales</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditMeds">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="item-list" id="listMedicamentos">
+            </div>
+        </div>
+
+        <!-- 6. Cirugías o procedimientos -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-suit-heart-fill icon-teal-text"></i>
+                    <h3>Cirugías o procedimientos</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditSurgeries">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="item-list" id="listCirugias">
+            </div>
+        </div>
+
+        <!-- 7. Información de seguro -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="bi bi-shield-check icon-blue-text"></i>
+                    <h3>Información de seguro</h3>
+                </div>
+                <button type="button" class="btn-edit" id="btnEditInsurance">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="field-group">
+                <span class="field-label">Aseguradora / EPS</span>
+                <strong class="field-value" id="infoInsurer"></strong>
+            </div>
+            <div class="field-group">
+                <span class="field-label">Tipo de afiliación</span>
+                <strong class="field-value" id="infoAffType"></strong>
+            </div>
+            <div class="field-group">
+                <span class="field-label">Número de afiliación</span>
+                <strong class="field-value" id="infoAffNum"></strong>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BARRA INFERIOR DE NAVEGACIÓN -->
+    <nav class="bottom-nav">
+        <div class="nav-inner">
+            <a href="dashboard.html" class="nav-item">
+                <i class="bi bi-house-door"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="info.html" class="nav-item active">
+                <i class="bi bi-info-circle"></i>
+                <span>Mi información</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <i class="bi bi-telephone"></i>
+                <span>Contactos</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         MODALES
+         ========================================== -->
+
+    <!-- 1. MODAL EDITAR DATOS PERSONALES -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar datos personales</h2>
+                <button type="button" class="modal-close-btn" id="closeProfileModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-editProfileModal">
+                <div class="form-group">
+                    <label for="fullName">Nombre completo</label>
+                    <input type="text" id="fullName" class="form-control" value="Carlos Herrera">
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Fecha de nacimiento</label>
+                    <div class="input-icon-wrapper">
+                        <input type="text" id="birthDate" class="form-control" value="14/03/1985">
+                        <i class="bi bi-calendar3 input-icon"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="basicInfo">Información básica</label>
+                    <textarea id="basicInfo" class="form-control textarea-control" rows="3">Vive en Ciudad de México. Español como idioma principal.</textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelProfileModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. MODAL TIPO DE SANGRE -->
+    <div class="modal-overlay" id="bloodModal">
+        <div class="modal-card blood-modal-card">
+            <div class="modal-header">
+                <h2>Tipo de sangre</h2>
+                <button type="button" class="modal-close-btn" id="closeBloodModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <p class="blood-subtitle">Selecciona tu tipo de sangre:</p>
+            <div class="blood-grid">
+                <button type="button" class="blood-option">A+</button>
+                <button type="button" class="blood-option">A-</button>
+                <button type="button" class="blood-option">B+</button>
+                <button type="button" class="blood-option">B-</button>
+                <button type="button" class="blood-option">AB+</button>
+                <button type="button" class="blood-option">AB-</button>
+                <button type="button" class="blood-option active">O+</button>
+                <button type="button" class="blood-option">O-</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MODAL EDITAR ALERGIAS -->
+    <div class="modal-overlay" id="allergiesModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar — Alergias</h2>
+                <button type="button" class="modal-close-btn" id="closeAllergiesModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-allergiesModal">
+                <div class="form-group">
+                    <label for="allergiesInput" class="input-subtitle">Un elemento por línea</label>
+                    <textarea id="allergiesInput" class="form-control textarea-control" rows="5">Penicilina
+Polen
+Mariscos</textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelAllergiesModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. MODAL EDITAR ANTECEDENTES MÉDICOS -->
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar — Antecedentes médicos</h2>
+                <button type="button" class="modal-close-btn" id="closeHistoryModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-historyModal">
+                <div class="form-group">
+                    <label for="historyInput" class="input-subtitle">Un elemento por línea</label>
+                    <textarea id="historyInput" class="form-control textarea-control" rows="5">Diabetes tipo 2
+Hipertensión arterial</textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelHistoryModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 5. MODAL EDITAR MEDICAMENTOS ACTUALES -->
+    <div class="modal-overlay" id="medsModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar — Medicamentos actuales</h2>
+                <button type="button" class="modal-close-btn" id="closeMedsModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-medsModal">
+                <div class="form-group">
+                    <label for="medsInput" class="input-subtitle">Un elemento por línea</label>
+                    <textarea id="medsInput" class="form-control textarea-control" rows="5">Metformina 500 mg (mañana y noche)
+Losartán 50 mg (mañana)</textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelMedsModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 6. MODAL EDITAR CIRUGÍAS Y PROCEDIMIENTOS -->
+    <div class="modal-overlay" id="surgeriesModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar — Cirugías y procedimientos</h2>
+                <button type="button" class="modal-close-btn" id="closeSurgeriesModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-surgeriesModal">
+                <div class="form-group">
+                    <label for="surgeriesInput" class="input-subtitle">Un elemento por línea</label>
+                    <textarea id="surgeriesInput" class="form-control textarea-control" rows="5">Apendicectomía (2018)
+Artroscopia rodilla derecha (2021)</textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelSurgeriesModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 7. MODAL EDITAR INFORMACIÓN DE SEGURO -->
+    <div class="modal-overlay" id="insuranceModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar información de seguro</h2>
+                <button type="button" class="modal-close-btn" id="closeInsuranceModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-insuranceModal">
+                <div class="form-group">
+                    <label for="insurerInput">Aseguradora / EPS</label>
+                    <input type="text" id="insurerInput" class="form-control" value="SURA">
+                </div>
+                <div class="form-group">
+                    <label for="affiliationTypeInput">Tipo de afiliación</label>
+                    <input type="text" id="affiliationTypeInput" class="form-control" value="EPS">
+                </div>
+                <div class="form-group">
+                    <label for="affiliationNumInput">Número de afiliación</label>
+                    <input type="text" id="affiliationNumInput" class="form-control" value="XXXX-XXXX">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelInsuranceModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT PARA MODALES -->
+    <script>
+        // Modal 1: Datos Personales
+        const profileModal = document.getElementById('editProfileModal');
+        const openProfileBtn = document.getElementById('btnEditProfile');
+        const closeProfileBtn = document.getElementById('closeProfileModal');
+        const cancelProfileBtn = document.getElementById('cancelProfileModal');
+
+        if (openProfileBtn) openProfileBtn.addEventListener('click', () => profileModal.classList.add('active'));
+        if (closeProfileBtn) closeProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
+        if (cancelProfileBtn) cancelProfileBtn.addEventListener('click', () => profileModal.classList.remove('active'));
+
+        // Modal 2: Tipo de Sangre
+        const bloodModal = document.getElementById('bloodModal');
+        const openBloodBtn = document.getElementById('btnEditBlood');
+        const closeBloodBtn = document.getElementById('closeBloodModal');
+
+        if (openBloodBtn) openBloodBtn.addEventListener('click', () => bloodModal.classList.add('active'));
+        if (closeBloodBtn) closeBloodBtn.addEventListener('click', () => bloodModal.classList.remove('active'));
+
+        const bloodOptions = document.querySelectorAll('.blood-option');
+        bloodOptions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                bloodOptions.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                setTimeout(() => bloodModal.classList.remove('active'), 200);
+            });
+        });
+
+        // Modal 3: Alergias
+        const allergiesModal = document.getElementById('allergiesModal');
+        const openAllergiesBtn = document.getElementById('btnEditAllergies');
+        const closeAllergiesBtn = document.getElementById('closeAllergiesModal');
+        const cancelAllergiesBtn = document.getElementById('cancelAllergiesModal');
+
+        if (openAllergiesBtn) openAllergiesBtn.addEventListener('click', () => allergiesModal.classList.add('active'));
+        if (closeAllergiesBtn) closeAllergiesBtn.addEventListener('click', () => allergiesModal.classList.remove('active'));
+        if (cancelAllergiesBtn) cancelAllergiesBtn.addEventListener('click', () => allergiesModal.classList.remove('active'));
+
+        // Modal 4: Antecedentes Médicos
+        const historyModal = document.getElementById('historyModal');
+        const openHistoryBtn = document.getElementById('btnEditHistory');
+        const closeHistoryBtn = document.getElementById('closeHistoryModal');
+        const cancelHistoryBtn = document.getElementById('cancelHistoryModal');
+
+        if (openHistoryBtn) openHistoryBtn.addEventListener('click', () => historyModal.classList.add('active'));
+        if (closeHistoryBtn) closeHistoryBtn.addEventListener('click', () => historyModal.classList.remove('active'));
+        if (cancelHistoryBtn) cancelHistoryBtn.addEventListener('click', () => historyModal.classList.remove('active'));
+
+        // Modal 5: Medicamentos Actuales
+        const medsModal = document.getElementById('medsModal');
+        const openMedsBtn = document.getElementById('btnEditMeds');
+        const closeMedsBtn = document.getElementById('closeMedsModal');
+        const cancelMedsBtn = document.getElementById('cancelMedsModal');
+
+        if (openMedsBtn) openMedsBtn.addEventListener('click', () => medsModal.classList.add('active'));
+        if (closeMedsBtn) closeMedsBtn.addEventListener('click', () => medsModal.classList.remove('active'));
+        if (cancelMedsBtn) cancelMedsBtn.addEventListener('click', () => medsModal.classList.remove('active'));
+
+        // Modal 6: Cirugías y Procedimientos
+        const surgeriesModal = document.getElementById('surgeriesModal');
+        const openSurgeriesBtn = document.getElementById('btnEditSurgeries');
+        const closeSurgeriesBtn = document.getElementById('closeSurgeriesModal');
+        const cancelSurgeriesBtn = document.getElementById('cancelSurgeriesModal');
+
+        if (openSurgeriesBtn) openSurgeriesBtn.addEventListener('click', () => surgeriesModal.classList.add('active'));
+        if (closeSurgeriesBtn) closeSurgeriesBtn.addEventListener('click', () => surgeriesModal.classList.remove('active'));
+        if (cancelSurgeriesBtn) cancelSurgeriesBtn.addEventListener('click', () => surgeriesModal.classList.remove('active'));
+
+        // Modal 7: Información de Seguro
+        const insuranceModal = document.getElementById('insuranceModal');
+        const openInsuranceBtn = document.getElementById('btnEditInsurance');
+        const closeInsuranceBtn = document.getElementById('closeInsuranceModal');
+        const cancelInsuranceModalBtn = document.getElementById('cancelInsuranceModal');
+
+        if (openInsuranceBtn) openInsuranceBtn.addEventListener('click', () => insuranceModal.classList.add('active'));
+        if (closeInsuranceBtn) closeInsuranceBtn.addEventListener('click', () => insuranceModal.classList.remove('active'));
+        if (cancelInsuranceModalBtn) cancelInsuranceModalBtn.addEventListener('click', () => insuranceModal.classList.remove('active'));
+
+        // Cierre general al hacer clic fuera del cuadro blanco
+        window.addEventListener('click', (e) => {
+            if (e.target === profileModal) profileModal.classList.remove('active');
+            if (e.target === bloodModal) bloodModal.classList.remove('active');
+            if (e.target === allergiesModal) allergiesModal.classList.remove('active');
+            if (e.target === historyModal) historyModal.classList.remove('active');
+            if (e.target === medsModal) medsModal.classList.remove('active');
+            if (e.target === surgeriesModal) surgeriesModal.classList.remove('active');
+            if (e.target === insuranceModal) insuranceModal.classList.remove('active');
+        });
+    </script>
+
+    <script src="js/api.js"></script>
+    <script src="js/info.js"></script>
+</body>
+</html>

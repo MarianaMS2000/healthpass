@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - HealthPass</title>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL (TEAL) -->
+    <header class="profile-header">
+        <div class="header-inner">
+            <div class="profile-avatar" id="pAvatar"></div>
+            <h1 class="profile-name" id="pName"></h1>
+            <p class="profile-handle" id="pHandle"></p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR CENTRAL -->
+    <main class="profile-container">
+
+        <!-- DATOS PERSONALES -->
+        <section class="card-section">
+            <div class="card-header-row">
+                <h2>Datos personales</h2>
+                <button type="button" class="btn-text-action" id="btnEditProfile">
+                    <i class="bi bi-pencil-square"></i> Editar
+                </button>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Nombre completo</span>
+                <p class="info-value" id="pFullName"></p>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Correo electrónico</span>
+                <p class="info-value" id="pEmail"></p>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Usuario</span>
+                <p class="info-value" id="pUsername"></p>
+            </div>
+        </section>
+
+        <!-- CONTRASEÑA -->
+        <section class="card-section">
+            <div class="card-header-row">
+                <h2>Contraseña</h2>
+                <button type="button" class="btn-text-action" id="btnChangePassword">Cambiar</button>
+            </div>
+        </section>
+
+        <!-- PRIVACIDAD Y ACCESO COMPARTIDO -->
+        <a href="privacy.html" class="card-section link-card">
+            <div class="link-card-content">
+                <div class="icon-box icon-mint">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <div class="link-card-text">
+                    <h3>Privacidad y acceso compartido</h3>
+                    <p>Controla qué datos son visibles</p>
+                </div>
+            </div>
+            <i class="bi bi-chevron-right arrow-icon"></i>
+        </a>
+
+        <!-- CERRAR SESIÓN -->
+        <button type="button" class="card-section link-card btn-logout">
+            <div class="link-card-content">
+                <div class="icon-box icon-slate">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+                <div class="link-card-text">
+                    <h3 class="text-logout">Cerrar sesión</h3>
+                </div>
+            </div>
+        </button>
+
+        <!-- ZONA DE PELIGRO -->
+        <section class="card-section danger-zone">
+            <h2>Zona de peligro</h2>
+            <p>Elimina toda tu información médica registrada. Esta acción no puede deshacerse.</p>
+            <button type="button" class="btn-danger" id="btnDeleteData">Eliminar mi información</button>
+        </section>
+
+    </main>
+
+    <!-- BARRA INFERIOR DE NAVEGACIÓN -->
+    <nav class="bottom-nav">
+        <div class="nav-inner">
+            <a href="dashboard.html" class="nav-item">
+                <i class="bi bi-house-door"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="info.html" class="nav-item">
+                <i class="bi bi-info-circle"></i>
+                <span>Mi información</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <i class="bi bi-telephone"></i>
+                <span>Contactos</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- MODAL EDITAR DATOS PERSONALES -->
+    <div class="modal-overlay" id="editProfileModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Editar datos personales</h2>
+                <button type="button" class="modal-close-btn" id="closeEditProfileModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="form-editProfileModal">
+                <div class="form-group">
+                    <label for="editFullName">Nombre completo <span class="required">*</span></label>
+                    <input type="text" id="editFullName" class="form-control" value="Carlos Herrera">
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="editEmail" class="form-control" value="carlos.herrera@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="editUsername">Usuario <span class="required">*</span></label>
+                    <input type="text" id="editUsername" class="form-control" value="@carlosherrera">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancelEditProfileModal">Cancelar</button>
+                    <button type="submit" class="btn-modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL CAMBIAR CONTRASEÑA -->
+    <div class="modal-overlay" id="changePasswordModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Contraseña</h2>
+                <button type="button" class="btn-cancel-text" id="closePasswordModalText">Cancelar</button>
+            </div>
+            <form class="modal-body" id="form-changePasswordModal">
+                <div class="form-group">
+                    <label for="currentPassword">Contraseña actual</label>
+                    <input type="password" id="currentPassword" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Nueva contraseña</label>
+                    <input type="password" id="newPassword" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar nueva contraseña</label>
+                    <input type="password" id="confirmPassword" class="form-control">
+                </div>
+                <div class="modal-actions-full">
+                    <button type="submit" class="btn-modal-submit-full">Actualizar contraseña</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL ELIMINAR INFORMACIÓN -->
+    <div class="modal-overlay" id="deleteDataModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>¿Eliminar tu información?</h2>
+                <button type="button" class="btn-close-icon" id="closeDeleteModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Alerta rosada -->
+                <div class="danger-warning-box">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <span>Esta acción no puede deshacerse.</span>
+                </div>
+                
+                <p class="modal-description">
+                    Se eliminará toda tu información médica y tus contactos. Tu cuenta permanecerá activa.
+                </p>
+
+                <div class="modal-actions-grid">
+                    <button type="button" class="btn-modal-cancel-outline" id="cancelDeleteBtn">Cancelar</button>
+                    <button type="button" class="btn-modal-danger-fill" id="confirmDeleteBtn">Sí, eliminar todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TOAST (INFORMACIÓN ELIMINADA) -->
+    <div class="toast-notification toast-danger hidden" id="toastDeleteNotification">
+        <i class="bi bi-check-lg"></i>
+        <span>Información eliminada</span>
+    </div>
+
+    <!-- SCRIPT DE INTERACTIVIDAD UNIFICADO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- MODAL EDITAR PERFIL ---
+            const editProfileModal = document.getElementById('editProfileModal');
+            const openEditProfileBtn = document.getElementById('btnEditProfile');
+            const closeEditProfileBtn = document.getElementById('closeEditProfileModal');
+            const cancelEditProfileBtn = document.getElementById('cancelEditProfileModal');
+
+            if (openEditProfileBtn && editProfileModal) {
+                openEditProfileBtn.addEventListener('click', () => editProfileModal.classList.add('active'));
+            }
+            if (closeEditProfileBtn && editProfileModal) {
+                closeEditProfileBtn.addEventListener('click', () => editProfileModal.classList.remove('active'));
+            }
+            if (cancelEditProfileBtn && editProfileModal) {
+                cancelEditProfileBtn.addEventListener('click', () => editProfileModal.classList.remove('active'));
+            }
+
+            // --- MODAL CAMBIAR CONTRASEÑA ---
+            const changePasswordModal = document.getElementById('changePasswordModal');
+            const openChangePasswordBtn = document.getElementById('btnChangePassword');
+            const closePasswordModalText = document.getElementById('closePasswordModalText');
+
+            if (openChangePasswordBtn && changePasswordModal) {
+                openChangePasswordBtn.addEventListener('click', () => changePasswordModal.classList.add('active'));
+            }
+            if (closePasswordModalText && changePasswordModal) {
+                closePasswordModalText.addEventListener('click', () => changePasswordModal.classList.remove('active'));
+            }
+
+            // --- MODAL ELIMINAR INFORMACIÓN ---
+            const deleteDataModal = document.getElementById('deleteDataModal');
+            const openDeleteDataBtn = document.getElementById('btnDeleteData');
+            const closeDeleteModal = document.getElementById('closeDeleteModal');
+            const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+            const toastDelete = document.getElementById('toastDeleteNotification');
+
+            if (openDeleteDataBtn && deleteDataModal) {
+                openDeleteDataBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    deleteDataModal.classList.add('active');
+                });
+            }
+
+            const closeDeleteModalFunc = () => {
+                if (deleteDataModal) deleteDataModal.classList.remove('active');
+            };
+
+            if (closeDeleteModal) closeDeleteModal.addEventListener('click', closeDeleteModalFunc);
+            if (cancelDeleteBtn) cancelDeleteBtn.addEventListener('click', closeDeleteModalFunc);
+
+            // Confirmar eliminación
+            if (confirmDeleteBtn) {
+                confirmDeleteBtn.addEventListener('click', () => {
+                    closeDeleteModalFunc();
+
+                    // Mostrar toast rojo de "Información eliminada"
+                    if (toastDelete) {
+                        toastDelete.classList.remove('hidden');
+                        setTimeout(() => {
+                            toastDelete.classList.add('show');
+                        }, 20);
+
+                        // Ocultar toast a los 2 segundos
+                        setTimeout(() => {
+                            toastDelete.classList.remove('show');
+                            setTimeout(() => {
+                                toastDelete.classList.add('hidden');
+                            }, 200);
+                        }, 2000);
+                    }
+                });
+            }
+
+            // --- CIERRE AL HACER CLIC FUERA ---
+            window.addEventListener('click', (e) => {
+                if (e.target === editProfileModal) editProfileModal.classList.remove('active');
+                if (e.target === changePasswordModal) changePasswordModal.classList.remove('active');
+                if (e.target === deleteDataModal) deleteDataModal.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script src="js/api.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

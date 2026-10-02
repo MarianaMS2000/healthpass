@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidad y Acceso - HealthPass</title>
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/privacy.css">
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL (TEAL) -->
+    <header class="privacy-header">
+        <div class="header-inner">
+            <h1>Privacidad y acceso</h1>
+            <p>Controla qué información es visible en emergencias</p>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR CENTRAL -->
+    <main class="privacy-container">
+
+        <!-- SECCIÓN: VISTA DE EMERGENCIA - VISIBILIDAD -->
+        <section class="card-section">
+            <h2 class="card-title">Vista de emergencia – visibilidad</h2>
+
+            <div class="toggle-list">
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Tipo de sangre</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="sangre" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Alergias</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="alergias" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Medicamentos actuales</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="medicamentos" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Antecedentes médicos</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="antecedentes" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Cirugías o procedimientos</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="cirugias" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <h3>Contacto de emergencia</h3>
+                        <p class="toggle-status">Visible en la vista de emergencia</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" data-key="contacto" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: ACCESO COMPARTIDO -->
+        <section class="card-section">
+            <h2 class="card-title">Acceso compartido</h2>
+            <p class="section-subtext">Genera un enlace de acceso limitado para compartir con una persona de confianza o tu médico.</p>
+            
+            <!-- ESTADO 1: BOTÓN INICIAL -->
+            <button type="button" class="btn-generate-link" id="btnGenerateLink">
+                <i class="bi bi-link-45deg"></i> Generar enlace de acceso
+            </button>
+
+            <!-- ESTADO 2: ENLACE GENERADO -->
+            <div class="generated-link-box hidden" id="generatedLinkBox">
+                <div class="link-display">
+                    <i class="bi bi-link-45deg"></i>
+                    <span id="linkText"></span>
+                </div>
+                <div class="link-actions">
+                    <button type="button" class="btn-copy" id="btnCopyLink">Copiar enlace</button>
+                    <button type="button" class="btn-revoke" id="btnRevokeAccess">Revocar acceso</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER INFORMATIVO -->
+        <div class="info-banner">
+            <i class="bi bi-shield-check"></i>
+            <span>Solo tú controlas quién ve tu información. Puedes revocar el acceso en cualquier momento.</span>
+        </div>
+
+    </main>
+
+    <!-- NOTIFICACIÓN TIPO TOAST (ENLACE GENERADO / COPIADO) -->
+    <div class="toast-notification hidden" id="toastNotification">
+        <i class="bi bi-check-lg"></i>
+        <span id="toastText">Enlace generado</span>
+    </div>
+
+    <!-- BARRA INFERIOR DE NAVEGACIÓN -->
+    <nav class="bottom-nav">
+        <div class="nav-inner">
+            <a href="dashboard.html" class="nav-item">
+                <i class="bi bi-house-door"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="info.html" class="nav-item">
+                <i class="bi bi-info-circle"></i>
+                <span>Mi información</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <i class="bi bi-telephone"></i>
+                <span>Contactos</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script src="js/api.js"></script>
+    <script src="js/privacy.js"></script>
+</body>
+</html>
