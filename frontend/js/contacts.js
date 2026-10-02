@@ -34,11 +34,12 @@
   // Agregar
   $('btnAddContact').addEventListener('click', () => {
     ['contactName', 'contactRelation', 'contactPhone'].forEach((id) => ($(id).value = ''));
+    $('contactPrincipal').checked = false;
     HP.openModal('addContactModal');
   });
   $('form-addContactModal').addEventListener('submit', (e) => {
     e.preventDefault();
-    run(() => HP.api('/contacts', { method: 'POST', body: { nombre: $('contactName').value, relacion: $('contactRelation').value, telefono: $('contactPhone').value } }), 'addContactModal');
+    run(() => HP.api('/contacts', { method: 'POST', body: { nombre: $('contactName').value, relacion: $('contactRelation').value, telefono: $('contactPhone').value, es_principal: $('contactPrincipal').checked } }), 'addContactModal');
   });
 
   // Editar / eliminar (delegación de eventos)
@@ -51,6 +52,7 @@
       $('editContactName').value = c.nombre;
       $('editContactRelation').value = c.relacion;
       $('editContactPhone').value = c.telefono;
+      $('editContactPrincipal').checked = !!c.es_principal;
       HP.openModal('editContactModal');
     } else if (del && confirm('¿Eliminar este contacto?')) {
       run(() => HP.api('/contacts/' + del.dataset.id, { method: 'DELETE' }), null, 'Contacto eliminado');
@@ -58,7 +60,7 @@
   });
   $('form-editContactModal').addEventListener('submit', (e) => {
     e.preventDefault();
-    run(() => HP.api('/contacts/' + editId, { method: 'PUT', body: { nombre: $('editContactName').value, relacion: $('editContactRelation').value, telefono: $('editContactPhone').value } }), 'editContactModal');
+    run(() => HP.api('/contacts/' + editId, { method: 'PUT', body: { nombre: $('editContactName').value, relacion: $('editContactRelation').value, telefono: $('editContactPhone').value, es_principal: $('editContactPrincipal').checked } }), 'editContactModal');
   });
 
   // Cerrar modales

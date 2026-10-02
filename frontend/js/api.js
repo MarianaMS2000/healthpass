@@ -70,5 +70,40 @@ const HP = (() => {
     return 'https://wa.me/' + digits;
   }
 
-  return { api, requireAuth, esc, $, setText, flash, toISODate, toDisplayDate, openModal, closeModal, waLink};
+  // Saludo según la hora local del dispositivo de quien entra
+  function greeting(date = new Date()) {
+    const h = date.getHours();
+    if (h >= 5 && h < 12) return 'Buenos días';
+    if (h >= 12 && h < 18) return 'Buenas tardes';
+    return 'Buenas noches';
+  }
+
+  // "2026-10-03T15:20:00Z" -> "3 de octubre, 2026" (en la zona horaria de quien lo ve)
+  function formatLongDate(iso) {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return `${d.toLocaleDateString('es-CO', { day: 'numeric', month: 'long' })}, ${d.getFullYear()}`;
+  }
+
+  // ¿El texto dice "no tengo / ninguna / sin ..."? Es estricto a propósito: solo cuenta si TODO el
+  // texto es una negación genérica. "No tolero la penicilina" NO cuenta (sigue siendo una alergia real).
+  const NONE_ALONE = /^(no|nada|nunca|ninguno|ninguna|ningun|n a|na|no aplica|no hay|no tiene|no presenta|sin datos|sin registros?|sin informacion|ninguno conocido|ninguna conocida|sin registrar)$/;
+  const NONE_LEAD = /^(no (tengo|presento|padezco|sufro|poseo|he tenido|tiene|presenta|padece|sufre|hay|existe|existen|registro|conozco|he sido|me han|le han|se me han|tomo|consumo|uso|estoy tomando|estoy usando)|nunca (he tenido|he sido|me han|tuve|he padecido)|sin|ninguna?|ningun)\b/;
+  const NONE_FILLER = new Set(('alergia alergias alergico alergica alergicos alergicas conocida conocidas conocido conocidos antecedente antecedentes ' +
+    'medico medica medicos medicas medicamento medicamentos medicina medicinas cirugia cirugias procedimiento procedimientos operacion operaciones ' +
+    'operado operada intervenido intervenida enfermedad enfermedades condicion condiciones cronica cronicas cronico cronicos patologia patologias ' +
+    'de del ni o y a la el los las en mi mis para que actualmente ahora momento hasta por aun todavia ningun ninguna ninguno alimentaria alimentarias ' +
+    'alimento alimentos medicamentosa medicamentosas registrada registradas registrado registrados registrar importante importantes previa previas previo previos ' +
+    'hospitalizacion hospitalizaciones tratamiento tratamientos regularmente permanente permanentes diagnosticada diagnosticado diagnosticadas diagnosticados hecho practicado practicada').split(' '));
+  function isNone(text) {
+    const n = String(text ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!n) return false;
+    if (NONE_ALONE.test(n)) return true;
+    const m = n.match(NONE_LEAD);
+    if (!m) return false;
+    return n.slice(m[0].length).split(' ').filter(Boolean).every((w) => NONE_FILLER.has(w));
+  }
+
+  return { api, requireAuth, esc, $, setText, flash, toISODate, toDisplayDate, openModal, closeModal, waLink, greeting, formatLongDate, isNone };
 })();

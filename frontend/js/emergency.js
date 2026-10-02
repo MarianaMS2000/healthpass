@@ -6,7 +6,8 @@
   const card = (icon, color, title, body) => `
     <div class="card"><div class="card-title"><i class="bi ${icon} ${color}"></i><h3>${title}</h3></div>${body}</div>`;
   const empty = '<p style="color:#9ca3af;margin:0">Sin registros</p>';
-  const paras = (a) => (a.length ? `<div class="text-content">${a.map((x) => `<p>${esc(x)}</p>`).join('')}</div>` : empty);
+  const none = (x) => (HP.isNone(x) ? 'is-none' : '');
+  const paras = (a) => (a.length ? `<div class="text-content">${a.map((x) => `<p class="${none(x)}">${esc(x)}</p>`).join('')}</div>` : empty);
 
   function render(d) {
     const v = d.visibilidad;
@@ -22,9 +23,9 @@
         <div><span class="card-label">Tipo de sangre</span><strong class="blood-type-text">${esc(d.tipo_sangre || 'No registrado')}</strong></div>
       </div></div>`;
     if (v.alergias) html += card('bi-exclamation-triangle-fill', 'icon-amber-text', 'Alergias',
-      d.alergias.length ? `<div class="tags-container">${d.alergias.map((a) => `<span class="badge-tag">${esc(a)}</span>`).join('')}</div>` : empty);
+      d.alergias.length ? `<div class="tags-container">${d.alergias.map((a) => `<span class="badge-tag${HP.isNone(a) ? ' badge-none' : ''}">${esc(a)}</span>`).join('')}</div>` : empty);
     if (v.medicamentos) html += card('bi-capsule', 'icon-purple-text', 'Medicamentos actuales',
-      d.medicamentos.length ? `<ul class="list-styled">${d.medicamentos.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>` : empty);
+      d.medicamentos.length ? `<ul class="list-styled">${d.medicamentos.map((m) => `<li class="${none(m)}">${esc(m)}</li>`).join('')}</ul>` : empty);
     if (v.antecedentes) html += card('bi-info-circle-fill', 'icon-blue-text', 'Antecedentes médicos', paras(d.antecedentes));
     if (v.cirugias) html += card('bi-suit-heart-fill', 'icon-teal-text', 'Cirugías o procedimientos', paras(d.cirugias));
     if (v.contacto) {
@@ -35,8 +36,10 @@
           <div class="contact-body">
             <div class="contact-details"><strong class="contact-name">${esc(c.nombre)}</strong><span class="contact-relation">${esc(c.relacion)}</span>
             <a href="tel:${esc(tel)}" class="contact-phone">${esc(c.telefono)}</a></div>
-            <a href="tel:${esc(tel)}" class="call-btn"><i class="bi bi-telephone-outbound-fill"></i><span>Llamar</span></a>
-            <a href="${esc(HP.waLink(c.telefono))}" target="_blank" rel="noopener" class="call-btn" style="background:#16a34a"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
+            <div class="contact-btns">
+              <a href="tel:${esc(tel)}" class="call-btn"><i class="bi bi-telephone-outbound-fill"></i><span>Llamar</span></a>
+              <a href="${esc(HP.waLink(c.telefono))}" target="_blank" rel="noopener" class="call-btn call-btn-wa"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
+            </div>
           </div></div>`;
       }).join('') : card('bi-telephone-fill', 'icon-teal-text', 'Contacto de emergencia', empty);
     }

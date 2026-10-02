@@ -445,3 +445,29 @@ body {
 .btn-whatsapp:hover {
     background: #bbf7d0;
 }
+
+/* Casilla "contacto principal" */
+.form-group .check-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #0F172A;
+    cursor: pointer;
+}
+
+.check-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0D9488;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.field-hint {
+    font-size: 0.8rem;
+    color: #64748B;
+    line-height: 1.4;
+    padding-left: 1.7rem;
+}

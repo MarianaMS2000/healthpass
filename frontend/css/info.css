@@ -240,6 +240,18 @@ body {
     font-weight: 400;
 }
 
+.list-item.is-none {
+    background-color: transparent;
+    border: 1px dashed #cbd5e1;
+    color: #94a3b8;
+}
+
+.field-value.is-none,
+.field-text.is-none {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
 .btn-delete {
     background: transparent;
     border: none;

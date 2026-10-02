@@ -28,8 +28,8 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const { rows } = await pool.query(
-      'INSERT INTO contactos_emergencia (usuario_id, nombre, relacion, telefono) VALUES ($1,$2,$3,$4) RETURNING id',
-      [req.userId, ...fields(req.body)]
+      'INSERT INTO contactos_emergencia (usuario_id, nombre, relacion, telefono, es_principal) VALUES ($1,$2,$3,$4,$5) RETURNING id',
+      [req.userId, ...fields(req.body), req.body.es_principal === true]
     );
     res.status(201).json({ id: rows[0].id });
   } catch (e) {
@@ -42,8 +42,8 @@ router.put('/:id', async (req, res, next) => {
     const id = Number(req.params.id);
     if (!Number.isInteger(id)) throw bad('Id inválido');
     const { rowCount } = await pool.query(
-      'UPDATE contactos_emergencia SET nombre=$1, relacion=$2, telefono=$3 WHERE id=$4 AND usuario_id=$5',
-      [...fields(req.body), id, req.userId]
+      'UPDATE contactos_emergencia SET nombre=$1, relacion=$2, telefono=$3, es_principal=$6 WHERE id=$4 AND usuario_id=$5',
+      [...fields(req.body), id, req.userId, req.body.es_principal === true]
     );
     if (!rowCount) return res.status(404).json({ error: 'Contacto no encontrado' });
     res.json({ ok: true });

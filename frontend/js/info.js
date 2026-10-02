@@ -19,6 +19,8 @@
     HP.setText('infoAffType', p.tipo_afiliacion || 'Sin registrar');
     HP.setText('infoAffNum', p.numero_afiliacion || 'Sin registrar');
 
+    ['infoBasic', 'infoInsurer', 'infoAffType', 'infoAffNum'].forEach((id) => $(id).classList.toggle('is-none', HP.isNone($(id).textContent)));
+
     $('fullName').value = p.nombre_completo;
     $('birthDate').value = HP.toDisplayDate(p.fecha_nacimiento);
     $('basicInfo').value = p.info_basica || '';
@@ -30,7 +32,7 @@
     LISTAS.forEach(({ plural, list, input }) => {
       const items = d[plural];
       $(list).innerHTML = items.length
-        ? items.map((i) => `<div class="list-item"><span>${esc(i.descripcion)}</span>
+        ? items.map((i) => `<div class="list-item${HP.isNone(i.descripcion) ? ' is-none' : ''}"><span>${esc(i.descripcion)}</span>
             <button type="button" class="btn-delete" data-id="${i.id}" aria-label="Eliminar"><i class="bi bi-trash"></i></button></div>`).join('')
         : '<div class="list-item"><span style="color:#9ca3af">Sin registros</span></div>';
       $(input).value = items.map((i) => i.descripcion).join('\n');

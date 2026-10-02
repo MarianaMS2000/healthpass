@@ -150,13 +150,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- 2.6 Garantiza un único contacto principal; el primero que se crea es el principal
+-- 2.6 Garantiza un único contacto principal. El principal lo elige la persona (no se asigna solo)
 CREATE OR REPLACE FUNCTION fn_gestionar_principal() RETURNS TRIGGER AS $$
 BEGIN
-    IF TG_OP = 'INSERT'
-       AND NOT EXISTS (SELECT 1 FROM contactos_emergencia WHERE usuario_id = NEW.usuario_id) THEN
-        NEW.es_principal := TRUE;
-    END IF;
     IF NEW.es_principal THEN
         UPDATE contactos_emergencia
            SET es_principal = FALSE
@@ -165,20 +161,6 @@ BEGIN
            AND id IS DISTINCT FROM NEW.id;
     END IF;
     RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- 2.7 Si se borra el contacto principal, el contacto más antiguo pasa a ser el principal
-CREATE OR REPLACE FUNCTION fn_promover_principal() RETURNS TRIGGER AS $$
-BEGIN
-    IF OLD.es_principal THEN
-        UPDATE contactos_emergencia
-           SET es_principal = TRUE
-         WHERE id = (SELECT id FROM contactos_emergencia
-                      WHERE usuario_id = OLD.usuario_id
-                      ORDER BY creado_en, id LIMIT 1);
-    END IF;
-    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -235,9 +217,9 @@ DROP TRIGGER IF EXISTS trg_contactos_principal ON contactos_emergencia;
 CREATE TRIGGER trg_contactos_principal BEFORE INSERT OR UPDATE ON contactos_emergencia
     FOR EACH ROW EXECUTE FUNCTION fn_gestionar_principal();
 
+-- Ya no se promueve un principal automáticamente al borrar el actual
 DROP TRIGGER IF EXISTS trg_contactos_promover ON contactos_emergencia;
-CREATE TRIGGER trg_contactos_promover AFTER DELETE ON contactos_emergencia
-    FOR EACH ROW EXECUTE FUNCTION fn_promover_principal();
+DROP FUNCTION IF EXISTS fn_promover_principal();
 
 DROP TRIGGER IF EXISTS trg_audit_items ON items_medicos;
 CREATE TRIGGER trg_audit_items AFTER INSERT OR UPDATE OR DELETE ON items_medicos
@@ -428,7 +410,11 @@ LANGUAGE sql STABLE AS $$
         'aseguradora',    pm.aseguradora,
         'n_alergias',     (SELECT COUNT(*) FROM items_medicos WHERE usuario_id = u.id AND categoria = 'alergia'),
         'n_medicamentos', (SELECT COUNT(*) FROM items_medicos WHERE usuario_id = u.id AND categoria = 'medicamento'),
-        'n_contactos',    (SELECT COUNT(*) FROM contactos_emergencia WHERE usuario_id = u.id))
+        'n_contactos',    (SELECT COUNT(*) FROM contactos_emergencia WHERE usuario_id = u.id),
+        'ultima_actualizacion', (SELECT to_char(MAX(fecha) AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')
+                                   FROM auditoria
+                                  WHERE usuario_id = u.id
+                                    AND tabla IN ('items_medicos', 'contactos_emergencia', 'perfiles_medicos')))
       FROM usuarios u
       JOIN perfiles_medicos pm ON pm.usuario_id = u.id
      WHERE u.id = p_usuario;
