@@ -5,8 +5,13 @@ const { Pool, types } = require('pg');
 // Las fechas (DATE) se devuelven como texto "YYYY-MM-DD" (evita desfases de zona horaria)
 types.setTypeParser(1082, (v) => v);
 
+if (!process.env.DATABASE_URL) {
+  console.error('ERROR: falta la variable DATABASE_URL (Environment en Render)');
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  connectionTimeoutMillis: 10000,
   ssl: process.env.PGSSL === 'true' ? { rejectUnauthorized: false } : false,
 });
 
@@ -21,7 +26,7 @@ async function migrate() {
       break;
     } catch (e) {
       if (i === 20) throw e;
-      console.log(`Esperando a la base de datos (${i}/20)...`);
+      console.log(`Esperando a la base de datos (${i}/20)... motivo: ${e.code || ''} ${e.message}`);
       await sleep(2000);
     }
   }

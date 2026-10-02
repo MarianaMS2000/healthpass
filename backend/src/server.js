@@ -113,9 +113,11 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-migrate()
-  .then(() => app.listen(PORT, () => console.log(`HealthPass escuchando en el puerto ${PORT}`)))
-  .catch((e) => {
-    console.error('No se pudo iniciar:', e.message);
+// Se abre el puerto primero (Render lo necesita) y luego se prepara la base de datos
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`HealthPass escuchando en el puerto ${PORT}`);
+  migrate().catch((e) => {
+    console.error('No se pudo preparar la base de datos:', e.message);
     process.exit(1);
   });
+});
