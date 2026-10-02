@@ -36,6 +36,7 @@
             <div class="contact-details"><strong class="contact-name">${esc(c.nombre)}</strong><span class="contact-relation">${esc(c.relacion)}</span>
             <a href="tel:${esc(tel)}" class="contact-phone">${esc(c.telefono)}</a></div>
             <a href="tel:${esc(tel)}" class="call-btn"><i class="bi bi-telephone-outbound-fill"></i><span>Llamar</span></a>
+            <a href="${esc(HP.waLink(c.telefono))}" target="_blank" rel="noopener" class="call-btn" style="background:#16a34a"><i class="bi bi-whatsapp"></i><span>WhatsApp</span></a>
           </div></div>`;
       }).join('') : card('bi-telephone-fill', 'icon-teal-text', 'Contacto de emergencia', empty);
     }

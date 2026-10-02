@@ -18,6 +18,7 @@
         </div>
         <div class="contact-actions">
           <a href="tel:${esc(c.telefono.replace(/[^0-9+]/g, ''))}" class="btn-action btn-call" aria-label="Llamar a ${esc(c.nombre)}"><i class="bi bi-telephone"></i></a>
+          <a href="${esc(HP.waLink(c.telefono))}" target="_blank" rel="noopener" class="btn-action btn-whatsapp" aria-label="WhatsApp a ${esc(c.nombre)}"><i class="bi bi-whatsapp"></i></a>
           <button type="button" class="btn-action btn-edit" data-id="${c.id}" aria-label="Editar contacto"><i class="bi bi-pencil-square"></i></button>
           <button type="button" class="btn-action btn-delete" data-id="${c.id}" aria-label="Eliminar contacto"><i class="bi bi-trash"></i></button>
         </div>

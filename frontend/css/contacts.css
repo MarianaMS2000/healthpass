@@ -437,3 +437,11 @@ body {
     font-size: 0.95rem;
     cursor: pointer;
 }
+
+.btn-whatsapp {
+    background: #dcfce7;
+    color: #16a34a;
+}
+.btn-whatsapp:hover {
+    background: #bbf7d0;
+}

@@ -62,5 +62,13 @@ const HP = (() => {
   function openModal(id) { const m = $(id); if (m) m.classList.add('active'); }
   function closeModal(id) { const m = $(id); if (m) m.classList.remove('active'); }
 
-  return { api, requireAuth, esc, $, setText, flash, toISODate, toDisplayDate, openModal, closeModal };
+  // Convierte un teléfono a enlace de WhatsApp (solo dígitos, con indicativo de país)
+  function waLink(tel) {
+    const raw = String(tel || '').trim();
+    let digits = raw.replace(/\D/g, '');
+    if (!raw.startsWith('+') && digits.length === 10) digits = '57' + digits; // asume Colombia
+    return 'https://wa.me/' + digits;
+  }
+
+  return { api, requireAuth, esc, $, setText, flash, toISODate, toDisplayDate, openModal, closeModal, waLink};
 })();
