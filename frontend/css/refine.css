@@ -207,3 +207,17 @@ body {
         animation: none !important;
     }
 }
+
+/* Cabecera de emergencia en móvil: título y "Cerrar" con aire entre sí */
+@media (max-width: 560px) {
+    .emergency-header .header-icon-wrapper {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .emergency-header .header-title-box h1 {
+        font-size: 1.02rem;
+        line-height: 1.2;
+    }
+}

@@ -20,14 +20,14 @@ body {
     width: 100%;
     background-color: #0d9488;
     color: #ffffff;
-    padding: 2.2rem 1.5rem 4rem 1.5rem;
+    padding: 2.2rem 1.25rem 4rem 1.25rem;
     display: flex;
     justify-content: center;
 }
 
 .header-inner {
     width: 100%;
-    max-width: 580px; /* Alineado con el bloque central */
+    max-width: 680px; /* Alineado con el bloque central (720px - márgenes) */
     display: flex;
     justify-content: space-between;
     align-items: center;

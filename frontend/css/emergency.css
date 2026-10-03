@@ -20,7 +20,7 @@ body {
     width: 100%;
     background-color: #e11d48;
     color: #ffffff;
-    padding: 1.1rem 1.5rem;
+    padding: 1.1rem 1.25rem;
     display: flex;
     justify-content: center;
     position: sticky;
@@ -30,16 +30,18 @@ body {
 
 .header-inner {
     width: 100%;
-    max-width: 580px;
+    max-width: 680px; /* mismo ancho útil que las tarjetas (720px - márgenes) para que todo quede alineado y centrado */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .header-title-box {
     display: flex;
     align-items: center;
     gap: 0.85rem;
+    min-width: 0;
 }
 
 .header-icon-wrapper {
@@ -66,6 +68,8 @@ body {
 }
 
 .close-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
     color: #ffffff;
     text-decoration: none;
     font-size: 0.88rem;
