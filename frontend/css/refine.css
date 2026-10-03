@@ -221,3 +221,106 @@ body {
         line-height: 1.2;
     }
 }
+
+/* ==========================================================
+   Textos largos sin espacios (apellidos, nombres, correos, usuarios)
+   Nunca deben ensanchar la página: se parten dentro de su caja.
+   ========================================================== */
+
+/* Inicio: cabecera */
+.user-greeting {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+    line-height: 1.15;
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+}
+
+/* Inicio: tarjetas (un hijo de grid no se encoge si no se le permite) */
+.cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.info-card {
+    min-width: 0;
+}
+
+.card-value,
+.card-label {
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
+
+/* Perfil */
+.profile-header,
+.profile-container,
+.card-section {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.profile-header .header-inner {
+    width: 100%;
+    min-width: 0;
+}
+
+.profile-name,
+.profile-handle,
+.info-value {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Emergencia */
+.card-profile {
+    min-width: 0;
+}
+
+.card-profile .avatar-circle {
+    flex-shrink: 0;
+}
+
+.profile-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.profile-info h2,
+.profile-info p,
+.contact-details,
+.contact-relation,
+.contact-phone {
+    overflow-wrap: anywhere;
+    min-width: 0;
+}
+
+.badge-tag,
+.list-styled li,
+.text-content p {
+    overflow-wrap: anywhere;
+    max-width: 100%;
+}
+
+/* Mi información */
+.field-group,
+.field-value,
+.field-text {
+    min-width: 0;
+    max-width: 100%;
+}
+
+@media (max-width: 560px) {
+    .user-name {
+        font-size: 1.6rem;
+    }
+}
