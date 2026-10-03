@@ -119,14 +119,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-/* Info del contacto */
+/* Info del contacto (puede encogerse; los botones nunca) */
 .contact-info {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex: 1;
+    min-width: 0;
 }
 
 .avatar {
@@ -156,12 +159,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    min-width: 0;
 }
 
 .name-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
 }
 
 .contact-name {
@@ -169,6 +174,8 @@ body {
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-primary);
+    overflow-wrap: anywhere;
+    line-height: 1.3;
 }
 
 .badge-principal {
@@ -185,11 +192,17 @@ body {
     color: var(--text-secondary);
 }
 
+.contact-phone {
+    white-space: nowrap; /* el número nunca se parte */
+    font-variant-numeric: tabular-nums;
+}
+
 /* Botones de Acción */
 .contact-actions {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 .btn-action {
@@ -287,9 +300,27 @@ body {
 }
 
 /* Adaptación responsive móvil */
-@media (max-width: 500px) {
+@media (max-width: 560px) {
     .contacts-header {
         padding: 2.5rem 1rem 2rem 1rem;
+    }
+
+    .header-inner {
+        gap: 0.75rem;
+    }
+
+    .header-title-box {
+        min-width: 0;
+    }
+
+    .header-title-box h1 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    .btn-add-contact {
+        flex-shrink: 0;
+        padding: 0.55rem 1rem;
     }
 
     .contacts-container {
@@ -297,8 +328,17 @@ body {
         margin-top: 1.25rem;
     }
 
+    /* Tarjeta apilada: datos arriba (teléfono completo debajo) y acciones en su propia fila */
     .contact-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
         padding: 1rem;
+    }
+
+    .contact-info {
+        align-items: flex-start;
+        gap: 0.85rem;
     }
 
     .avatar {
@@ -307,10 +347,33 @@ body {
         font-size: 1rem;
     }
 
+    .contact-sub {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .contact-dot {
+        display: none;
+    }
+
+    .contact-phone {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    .contact-actions {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--border-color);
+    }
+
     .btn-action {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
+        width: 100%;
+        height: 42px;
+        font-size: 1.05rem;
     }
 }
 

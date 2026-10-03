@@ -13,7 +13,7 @@
           <div class="avatar ${COLORS[i % COLORS.length]}">${esc(c.nombre.charAt(0).toUpperCase())}</div>
           <div class="contact-details">
             <div class="name-row"><strong class="contact-name">${esc(c.nombre)}</strong>${c.es_principal ? '<span class="badge-principal">Principal</span>' : ''}</div>
-            <p class="contact-sub">${esc(c.relacion)} · ${esc(c.telefono)}</p>
+            <p class="contact-sub"><span class="contact-rel">${esc(c.relacion)}</span><span class="contact-dot" aria-hidden="true"> · </span><span class="contact-phone">${esc(c.telefono)}</span></p>
           </div>
         </div>
         <div class="contact-actions">

@@ -1,0 +1,209 @@
+/* ==========================================================
+   HealthPass · ajustes de acabado (se carga después del CSS de cada página)
+   Quita efectos decorativos de más, unifica radios y pesos
+   tipográficos, y arregla detalles de móvil.
+   Si algo no gusta, se puede borrar un bloque sin afectar el resto.
+   ========================================================== */
+
+/* ---------- Base ---------- */
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh; /* en móvil, 100vh queda detrás de la barra del navegador */
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+}
+
+/* Textos largos (nombres, correos, enlaces) nunca deben ensanchar la página */
+.field-value,
+.field-text,
+.list-item span,
+.contact-name,
+.profile-info h2,
+.user-name,
+#pName,
+#pEmail,
+#pFullName {
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Tipografía ---------- */
+/* 800 se ve pesado en pantallas pequeñas; 700 mantiene la jerarquía */
+.user-name,
+.blood-value,
+.blood-type-text,
+.brand-name,
+.auth-title {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3,
+.section-title,
+.card-title h2,
+.card-title h3 {
+    letter-spacing: -0.01em;
+}
+
+.card-value,
+.contact-phone,
+.field-value {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tarjetas: borde fino en lugar de sombras ---------- */
+.card,
+.info-card,
+.card-section,
+.contact-card,
+.auth-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+.card-section,
+.card {
+    background-color: #ffffff;
+}
+
+/* Iconos de color: sin resplandor del mismo color */
+.icon-red,
+.icon-amber-text,
+.icon-purple-text,
+.icon-blue-text,
+.icon-teal-text {
+    box-shadow: none;
+}
+
+.card-icon,
+.banner-icon-wrapper {
+    border-radius: 10px;
+}
+
+/* ---------- Banner de emergencia: color plano, sin “levitar” ---------- */
+.emergency-banner {
+    background: #e11d48;
+    border-radius: 14px;
+    box-shadow: none;
+    transition: background-color 0.15s ease;
+}
+
+.emergency-banner:hover {
+    transform: none;
+    box-shadow: none;
+    background: #be123c;
+}
+
+/* ---------- Botones ---------- */
+.call-btn,
+.call-btn-wa,
+.blood-option.active {
+    box-shadow: none;
+}
+
+.blood-option,
+.btn-action,
+.btn-copy,
+.btn-revoke,
+.btn-generate-link,
+.btn-modal-cancel,
+.btn-modal-save,
+.btn-logout {
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+button:active,
+.btn-action:active,
+.call-btn:active {
+    transform: scale(0.98);
+}
+
+/* ---------- Ventanas modales: fondo sólido, sin desenfoque ---------- */
+.modal-overlay {
+    background-color: rgba(15, 23, 42, 0.5);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal-card {
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+}
+
+.toast-notification {
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ---------- Accesibilidad: foco visible solo con teclado ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #0d9488;
+    outline-offset: 2px;
+}
+
+/* ---------- Barra inferior ---------- */
+.bottom-nav {
+    border-top: 1px solid #e2e8f0;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)); /* iPhone con barra inferior */
+}
+
+body {
+    padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 560px) {
+    /* iOS hace zoom al enfocar un campo con letra menor a 16px */
+    .form-control,
+    .form-group input,
+    textarea {
+        font-size: 16px;
+    }
+
+    /* Zona táctil mínima cómoda */
+    .btn-modal-cancel,
+    .btn-modal-save,
+    .btn-copy,
+    .btn-revoke,
+    .btn-generate-link {
+        min-height: 44px;
+    }
+
+    .modal-card {
+        padding: 1.25rem;
+    }
+
+    /* Barra inferior: "Mi información" puede ocupar dos líneas sin descuadrar los iconos */
+    .nav-item {
+        justify-content: flex-start;
+        gap: 0.25rem;
+        padding: 0 0.1rem;
+        text-align: center;
+        line-height: 1.15;
+        font-size: 0.7rem;
+    }
+
+    .card,
+    .card-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Menos movimiento si el dispositivo lo pide */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
